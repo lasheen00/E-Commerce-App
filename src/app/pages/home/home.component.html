@@ -1,0 +1,159 @@
+<!-- <section>
+    <div class="grid md:grid-cols-[70%_minmax(0,1fr)] ">
+  
+      <div>
+        <owl-carousel-o [options]="customMainSlider">
+          <ng-template carouselSlide><img src="/images/img1.avif" class="w-full h-[300px]" alt=""></ng-template>
+          <ng-template carouselSlide><img src="/images/img2.avif" class="w-full h-[300px]" alt=""></ng-template>
+          <ng-template carouselSlide><img src="/images/img3.avif" class="w-full h-[300px]" alt=""></ng-template>
+          <ng-template carouselSlide><img src="/images/img4.avif" class="w-full h-[300px]" alt=""></ng-template>
+          <ng-template carouselSlide><img src="/images/img5.avif" class="w-full h-[300px]" alt=""></ng-template>
+          <ng-template carouselSlide><img src="/images/img6.avif" class="w-full h-[300px]" alt=""></ng-template>
+        </owl-carousel-o>
+      </div>
+  
+      <div>
+        <img src="/images/grocery-banner.png" class="w-full h-[150px]" alt="">
+        <img src="/images/grocery-banner-2.jpeg" class="w-full h-[150px]" alt="">
+      </div>
+  
+    </div>
+  </section>
+  
+  <section>
+    <h2 class="text-4xl">{{ 'HOME.POPULAR_CATEGORIES' | translate }}</h2>
+    
+    <owl-carousel-o [options]="customOptions">
+      @for (cat of Categories; track cat._id) {
+        <ng-template carouselSlide>
+          <div>
+            <img [src]="cat.image" class="w-full h-[250px]" alt="">
+            <h3 class="text-green-600">{{ cat.name }}</h3>
+          </div>
+        </ng-template>
+      }
+    </owl-carousel-o>
+  </section>
+  
+  
+  <section>
+    <h2 class="text-4xl">{{ 'HOME.POPULAR_PRODUCTS' | translate }}</h2>
+  
+    <input 
+      [(ngModel)]="text" 
+      type="search" 
+      [placeholder]="'HOME.SEARCH_PLACEHOLDER' | translate" 
+      class="bg-white border mx-auto my-4 px-4 py-2 border-green-400/50 text-gray-900 text-sm rounded-lg focus:ring-green-400 focus:border-greering-green-400 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-400 dark:focus:border-greering-green-400">
+  
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+  
+      @for (prod of products.slice(0,12) | search : text; track prod.id) {
+        <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative">
+          <div [routerLink]="['/details', prod.id]">
+            <div class="card-img">
+              <img [src]="prod.imageCover" class="w-full h-[250px] object-contain" [alt]="prod.title">
+            </div>
+            <div class="card-body px-2 py-4">
+              <h4 class="text-green-500 text-xl">{{ prod.category.name }}</h4>
+              <h3 class="font-medium">{{ prod.title | term: 2 }}</h3>
+              <div class="flex justify-between items-center">
+                <span>{{ prod.price }} EGP</span>
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-300"></i>
+                  <span>{{ prod.price }} {{ 'DETAILS_PRODUCT.CURRENCY' | translate }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <button 
+            (click)="addToCart(prod.id)"
+            class="bg-green-500 text-white py-2 px-10 border rounded w-[90%] mx-auto block">
+            {{ 'HOME.ADD_TO_CART' | translate }}
+          </button>
+        </div>
+      }
+    </div>
+  </section> -->
+
+
+
+  <section>
+    <div class="grid grid-cols-1 md:grid-cols-[70%_minmax(0,1fr)] gap-4 md:gap-8 px-4 md:px-8">
+  
+      <div>
+        <owl-carousel-o [options]="customMainSlider">
+          @for (img of ['/images/img1.avif', '/images/img2.avif', '/images/img3.avif', '/images/img4.avif', '/images/img5.avif', '/images/img6.avif']; track img) {
+            <ng-template carouselSlide>
+              <img [src]="img" class="w-full h-[180px] md:h-[300px] rounded-lg shadow-lg" alt="">
+            </ng-template>
+          }
+        </owl-carousel-o>
+      </div>
+  
+      <div class="flex flex-col gap-2">
+        <img src="/images/grocery-banner.png" class="w-full h-[100px] md:h-[150px] rounded-lg shadow-md" alt="">
+        <img src="/images/grocery-banner-2.jpeg" class="w-full h-[100px] md:h-[150px] rounded-lg shadow-md" alt="">
+      </div>
+  
+    </div>
+  </section>
+  
+  <section class="mt-8">
+    <h2 class="text-center text-2xl md:text-4xl font-semibold text-gray-800">{{ 'HOME.POPULAR_CATEGORIES' | translate }}</h2>
+  
+    <owl-carousel-o [options]="customOptions" class="mt-4">
+      @for (cat of Categories; track cat._id) {
+        <ng-template carouselSlide>
+          <div class="text-center p-3">
+            <img [src]="cat.image" class="w-full h-[140px] md:h-[200px] rounded-lg shadow-md hover:scale-105 transition-transform duration-300" alt="">
+            <h3 class="text-green-600 text-sm md:text-lg mt-2 font-medium">{{ cat.name }}</h3>
+          </div>
+        </ng-template>
+      }
+    </owl-carousel-o>
+  </section>
+  
+  <section class="mt-8 px-4 md:px-8">
+    <h2 class="text-center text-2xl md:text-4xl font-semibold text-gray-800">{{ 'HOME.POPULAR_PRODUCTS' | translate }}</h2>
+  
+    <div class="mt-4 flex justify-center">
+      <input 
+        [(ngModel)]="text" 
+        type="search" 
+        [placeholder]="'HOME.SEARCH_PLACEHOLDER' | translate" 
+        class="bg-white border mx-auto px-4 py-2 border-green-400/50 text-gray-900 text-sm rounded-full focus:ring-green-400 focus:border-green-400 block w-full sm:w-2/3 md:w-1/2 shadow-md">
+    </div>
+  
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+      @for (prod of products.slice(0,12) | search : text; track prod.id) {
+        <div class="card border border-green-400/50 rounded-lg overflow-hidden shadow-md relative p-3 bg-white hover:shadow-lg transition-shadow duration-300">
+          
+          <div [routerLink]="['/details', prod.id]" >
+            <div class="w-full h-[180px] md:h-[250px] flex justify-center items-center">
+              <img [src]="prod.imageCover" class="max-h-full max-w-full object-contain rounded-lg" [alt]="prod.title">
+            </div>
+            <div class="px-2 py-3">
+              <h4 class="text-green-500 text-sm md:text-lg font-medium">{{ prod.category.name }}</h4>
+              <h3 class="font-medium text-gray-800 text-xs md:text-base truncate">{{ prod.title | term: 2 }}</h3>
+              <div class="flex justify-between items-center mt-2">
+                <span class="text-sm md:text-base font-semibold text-gray-700">{{ prod.price }}{{ 'DETAILS_PRODUCT.CURRENCY' | translate }}</span>
+                <div class="flex items-center">
+                  <i class="fas fa-star text-yellow-400 text-xs md:text-base"></i>
+                  <span class="text-xs md:text-base text-gray-600 ml-1">{{ prod.ratingsAverage }} </span>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <button 
+            (click)="addToCart(prod.id)"
+            class="bg-green-500 text-white py-1 md:py-2 px-4 md:px-10 rounded-full w-full md:w-[90%] mx-auto block text-xs md:text-base font-semibold mt-3  transform  ">
+            {{ 'HOME.ADD_TO_CART' | translate }}
+          </button>
+        </div>
+      }
+    </div>
+  </section>
+  
+  

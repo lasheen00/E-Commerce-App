@@ -1,0 +1,191 @@
+<section class="w-1/2 mx-auto bg-gray-50 rounded border shadow p-4">
+  <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-center text-green-600">
+    {{ 'FORM.TITLE' | translate }}
+  </h1>
+
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+
+    <!-- NAME FIELD -->
+    <div class="mb-1">
+      @let nameControl = registerForm.get('name');
+
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        {{ 'FORM.FIELDS.NAME' | translate }}:
+      </label>
+
+      <input formControlName="name" type="text" id="name"
+      class="bg-white border border-green-400/50 text-gray-900 text-sm rounded-lg focus:ring-green-400 focus:border-greering-green-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-400 dark:focus:border-greering-green-400">
+
+      @if (nameControl?.errors && nameControl?.touched)
+      {
+      <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <!-- icon -->
+        <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            @if (nameControl?.getError('required')) { 
+              <li>{{ 'VALIDATION.NAME.REQUIRED' | translate }}</li> 
+            }
+            @else if (nameControl?.getError('minlength')) { 
+              <li>{{ 'VALIDATION.NAME.MIN' | translate }}</li> 
+            }
+            @else if (nameControl?.getError('maxlength')) { 
+              <li>{{ 'VALIDATION.NAME.MAX' | translate }}</li> 
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+
+    <!-- EMAIL FIELD -->
+    <div class="mb-1">
+      @let emailControl = registerForm.get('email');
+
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        {{ 'FORM.FIELDS.EMAIL' | translate }}:
+      </label>
+
+      <input formControlName="email" type="email" id="email"
+      class="bg-white border border-green-400/50 text-gray-900 text-sm rounded-lg focus:ring-green-400 focus:border-greering-green-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-400 dark:focus:border-greering-green-400">
+
+      @if (emailControl?.errors && emailControl?.touched)
+      {
+      <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+
+        <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            @if (emailControl?.getError('required')) { 
+              <li>{{ 'VALIDATION.EMAIL.REQUIRED' | translate }}</li> 
+            }
+            @else if (emailControl?.getError('email')) { 
+              <li>{{ 'VALIDATION.EMAIL.INVALID' | translate }}</li> 
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+
+    <!-- PASSWORD FIELD -->
+    <div class="mb-1">
+      @let passwordControl = registerForm.get('password');
+
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        {{ 'FORM.FIELDS.PASSWORD' | translate }}:
+      </label>
+
+      <input formControlName="password" type="password" id="password"
+      class="bg-white border border-green-400/50 text-gray-900 text-sm rounded-lg focus:ring-green-400 focus:border-greering-green-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-400 dark:focus:border-greering-green-400">
+
+      @if (passwordControl?.errors && passwordControl?.touched)
+      {
+      <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+
+        <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            @if (passwordControl?.getError('required')) { 
+              <li>{{ 'VALIDATION.PASSWORD.REQUIRED' | translate }}</li> 
+            }
+            @else if (passwordControl?.getError('pattern')) { 
+              <li>{{ 'VALIDATION.PASSWORD.PATTERN' | translate }}</li> 
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+
+    <!-- REPASSWORD FIELD -->
+    <div class="mb-1">
+      <label for="rePassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        {{ 'FORM.FIELDS.REPASSWORD' | translate }}:
+      </label>
+
+      <input formControlName="rePassword" type="password" id="rePassword"
+      class="bg-white border border-green-400/50 text-gray-900 text-sm rounded-lg focus:ring-green-400 focus:border-greering-green-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-400 dark:focus:border-greering-green-400">
+
+      @if (registerForm.getError('mismatch') && registerForm.get('rePassword')?.touched)
+      {
+      <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+
+        <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            <li>{{ 'VALIDATION.REPASSWORD.MISMATCH' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+
+    <!-- PHONE FIELD -->
+    <div class="mb-1">
+      @let phoneControl = registerForm.get('phone');
+
+      <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        {{ 'FORM.FIELDS.PHONE' | translate }}:
+      </label>
+
+      <input formControlName="phone" type="tel" id="phone"
+      class="bg-white border border-green-400/50 text-gray-900 text-sm rounded-lg focus:ring-green-400 focus:border-greering-green-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-400 dark:focus:border-greering-green-400">
+
+      @if (phoneControl?.errors && phoneControl?.touched)
+      {
+      <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+
+        <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            @if (phoneControl?.getError('required')) { 
+              <li>{{ 'VALIDATION.PHONE.REQUIRED' | translate }}</li> 
+            }
+            @else if (phoneControl?.getError('pattern')) { 
+              <li>{{ 'VALIDATION.PHONE.INVALID' | translate }}</li> 
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+
+    <!-- BUTTON -->
+    <button [disabled]="isLoading" type="submit" class="btn-main w-full sm:w-auto">
+      {{ 'FORM.BUTTONS.SIGNUP' | translate }}
+      @if (isLoading) {
+        <span class="ms-1"><i class="fas fa-spin fa-spinner"></i></span>
+      }
+    </button>
+
+    <!-- SUCCESS / ERROR MESSAGE -->
+    @if (msgError) {
+      <p class="bg-red-400 text-white my-2 px-2 py-2 border">
+        {{ msgError }}
+      </p>
+    }
+
+    @if (Success) {
+      <p class="bg-green-400 text-white my-2 px-2 py-2 border">
+        {{ Success }}
+      </p>
+    }
+
+  </form>
+</section>

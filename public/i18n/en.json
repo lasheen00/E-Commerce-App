@@ -1,0 +1,140 @@
+{
+
+  "home": "Home",
+  "PRODUCTS": "Products",
+  "CATEGORIES": "Categories",
+  "BRANDS": "Brands",
+  "LANGUAGE": "Lang",
+  "login": "Login",
+  "REGISTER": "Register",
+  "LOGOUT": "Logout",
+  "ALL_PRODUCTS":"All Products",
+
+    "CART": {
+    "TITLE": "Show Cart",
+    "TOTAL": "Total Cart Price",
+    "CLEAR_CART": "Clear Cart",
+    "PRICE": "Price",
+    "REMOVE": "Remove",
+    "CHECKOUT": "Checkout",
+    "NO_DATA": "No Data Found"
+    },
+
+    "checkOut": {
+    "TITLE": "Checkout",
+    "DETAILS": "Address Details",
+    "DETAILS_PLACEHOLDER": "Enter your address details...",
+    "DETAILS_REQUIRED": "Address details are required.",
+    "PHONE": "Phone Number",
+    "PHONE_PLACEHOLDER": "Enter your phone number...",
+    "PHONE_REQUIRED": "Phone number is required.",
+    "PHONE_PATTERN": "Enter a valid Egyptian phone number starting with 010, 011, 012, or 015.",
+    "CITY": "City",
+    "CITY_PLACEHOLDER": "Enter your city...",
+    "CITY_REQUIRED": "City is required.",
+    "ONLINE_PAYMENT": "Online Payment",
+    "NO_DATA": "No data available"
+  },
+
+  "DETAILS_PRODUCT": {
+    "TITLE": "Product Details",
+    "DESCRIPTION": "Description",
+    "CATEGORY": "Category",
+    "PRICE": "Price",
+    "RATING": "Rating",
+    "CURRENCY": "EGP",
+    "ADD_TO_CART": "Add To Cart"
+  },
+
+  "FORGOT_PASSWORD": {
+    "TITLE": "Forgot Password",
+    "STEP1": {
+      "EMAIL_LABEL": "Email",
+      "EMAIL_REQUIRED": "Email is required.",
+      "EMAIL_INVALID": "Please enter a valid email address.",
+      "VERIFY_BUTTON": "Verify Email"
+    },
+    "STEP2": {
+      "RESET_CODE_LABEL": "Verification Code",
+      "CODE_REQUIRED": "Verification code is required.",
+      "CODE_INVALID": "Please enter a valid verification code.",
+      "VERIFY_BUTTON": "Verify Code"
+    },
+    "STEP3": {
+      "EMAIL_LABEL": "Email",
+      "PASSWORD_LABEL": "New Password",
+      "EMAIL_REQUIRED": "Email is required.",
+      "EMAIL_INVALID": "Please enter a valid email address.",
+      "PASSWORD_REQUIRED": "Password is required.",
+      "PASSWORD_INVALID": "Password must start with a capital letter and be exactly 8 characters long.",
+      "SUBMIT_BUTTON": "Login"
+    },
+    "LOADING": "Loading..."
+  },
+
+  "HOME": {
+    "POPULAR_CATEGORIES": "Popular Categories",
+    "POPULAR_PRODUCTS": "Popular Products",
+    "SEARCH_PLACEHOLDER": "Search By Name....",
+    "ADD_TO_CART": "Add To Cart"
+  },
+
+  "LOGIN": {
+    "TITLE": "Login Now:",
+    "EMAIL_LABEL": "Email:",
+    "EMAIL_REQUIRED": "Email is required.",
+    "EMAIL_INVALID": "Please enter a valid email address.",
+    "PASSWORD_LABEL": "Password:",
+    "PASSWORD_REQUIRED": "Password is required.",
+    "PASSWORD_INVALID": "Password must start with a capital letter and be exactly 8 characters long.",
+    "FORGOT_PASSWORD": "Forgot Password?",
+    "LOGIN_BUTTON": "Login",
+    "LOADING": "Loading...",
+    "SUCCESS_MESSAGE": "Login successful!",
+    "ERROR_MESSAGE": "Invalid email or password."
+  },
+
+  "FORM": {
+    "TITLE": "Register Now",
+    "FIELDS": {
+      "NAME": "Name",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "REPASSWORD": "Re-Password",
+      "PHONE": "Phone Number"
+    },
+    "BUTTONS": {
+      "SIGNUP": "Sign Up",
+      "RESET": "Reset"
+    }
+    },
+    "VALIDATION": {
+      "NAME": {
+        "REQUIRED": "Name is required.",
+        "MIN": "Name must be at least 3 characters long.",
+        "MAX": "Name cannot be more than 20 characters long."
+      },
+      "EMAIL": {
+        "REQUIRED": "Email is required.",
+        "INVALID": "Please enter a valid email address."
+      },
+      "PASSWORD": {
+        "REQUIRED": "Password is required.",
+        "PATTERN": "Password must start with a capital letter and be exactly 8 characters long."
+      },
+      "REPASSWORD": {
+        "MISMATCH": "Password confirmation is incorrect."
+      },
+      "PHONE": {
+        "REQUIRED": "Phone number is required.",
+        "INVALID": "Enter a valid Egyptian phone number starting with 010, 011, 012, or 015."
+      }
+    },
+    "MESSAGES": {
+      "SUCCESS": "Registration Successful!",
+      "ERROR": "An error occurred, please try again."
+    }
+
+  
+  }
+  

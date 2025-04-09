@@ -1,0 +1,124 @@
+<section class="w-1/2 mx-auto bg-gray-50 rounded border shadow p-4">
+  <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-center text-green-600">
+    {{ 'LOGIN.TITLE' | translate }}
+  </h1>
+  
+  <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+
+    <!-- Email Field -->
+    <div class="mb-1">
+      @let emailnameControl = loginForm.get('email');
+      
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        {{ 'LOGIN.EMAIL_LABEL' | translate }}
+      </label>
+
+      <input 
+        formControlName="email" 
+        type="email" 
+        id="email" 
+        class="bg-white border border-green-400/50 text-gray-900 text-sm rounded-lg focus:ring-green-400 focus:border-greering-green-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-400 dark:focus:border-greering-green-400"
+      >
+
+      @if (emailnameControl?.errors && emailnameControl?.touched) {
+        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          
+          <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+
+          <div>
+            <ul class="mt-1.5 list-disc list-inside">
+              @if (emailnameControl?.getError('required')) {
+                <li>{{ 'LOGIN.EMAIL_REQUIRED' | translate }}</li>
+              }
+              @else if (emailnameControl?.getError('email')) {
+                <li>{{ 'LOGIN.EMAIL_INVALID' | translate }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Password Field -->
+    <div class="mb-1">
+      @let passwordControl = loginForm.get('password');
+      
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        {{ 'LOGIN.PASSWORD_LABEL' | translate }}
+      </label>
+
+      <input 
+        formControlName="password" 
+        type="password" 
+        id="password" 
+        class="bg-white border border-green-400/50 text-gray-900 text-sm rounded-lg focus:ring-green-400 focus:border-greering-green-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-400 dark:focus:border-greering-green-400"
+      >
+
+      @if (passwordControl?.errors && passwordControl?.touched) {
+        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          
+          <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+
+          <div>
+            <ul class="mt-1.5 list-disc list-inside">
+              @if (passwordControl?.getError('required')) {
+                <li>{{ 'LOGIN.PASSWORD_REQUIRED' | translate }}</li>
+              }
+              @else if (passwordControl?.getError('pattern')) {
+                <li>{{ 'LOGIN.PASSWORD_INVALID' | translate }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex flex-col sm:flex-row items-center justify-end gap-4 mt-2">
+  
+      <a class="text-green-500 underline block w-full text-center text-xs sm:text-sm sm:w-auto sm:inline-block  sm:text-left" [routerLink]="['/forgot']">
+        {{ 'LOGIN.FORGOT_PASSWORD' | translate }}
+      </a>
+    
+      <button [disabled]="isLoading" type="submit" class="btn-main w-full sm:w-auto">
+        {{ 'LOGIN.LOGIN_BUTTON' | translate }}
+        @if (isLoading) {
+          <span class="ms-1"><i class="fas fa-spin fa-spinner"></i></span>
+        }
+      </button>
+    
+    </div>
+    <!-- <div class="flex items-center justify-end gap-4 mt-2">
+      
+      <a class="text-green-500 underline px-4 py-2 block sm:inline-block" [routerLink]="['/forgot']">
+        {{ 'LOGIN.FORGOT_PASSWORD' | translate }}
+      </a>
+
+      <button [disabled]="isLoading" type="submit" class="btn-main">
+        {{ 'LOGIN.LOGIN_BUTTON' | translate }}
+        @if (isLoading) {
+          <span class="ms-1"><i class="fas fa-spin fa-spinner"></i></span>
+        }
+      </button>
+
+    </div> -->
+
+    <!-- Error and Success Messages -->
+    @if (msgError) {
+      <p class="bg-red-400 text-white my-2 px-2 py-2 border">
+        {{ msgError | translate }}
+      </p>
+    }
+
+    @if (Success) {
+      <p class="bg-green-400 text-white my-2 px-2 py-2 border">
+        {{ Success | translate }}
+      </p>
+    }
+
+  </form>
+</section>
